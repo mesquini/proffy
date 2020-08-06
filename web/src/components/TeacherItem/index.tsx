@@ -1,34 +1,48 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import wpIcon from "../../assets/icons/whatsapp.svg";
 
 import "./styles.css";
+import { ITeacherItem } from "../../pages/TeacherList";
+import api from "../../services/api";
 
-const TeacherItem: React.FC = () => {
+interface IProps {
+  teacher: ITeacherItem;
+}
+
+const TeacherItem: React.FC<IProps> = ({ teacher }) => {
+  const handleCreateNewConnection = useCallback(() => {
+    api.post("/connections", {
+      user_id: teacher.id,
+    });
+  }, [teacher]);
+
   return (
     <article className="teacher-item">
       <header>
-        <img
-          src="https://avatars3.githubusercontent.com/u/40439740?s=460&u=16b1551f72c1360ed43a8117dbad0af5e9f70cad&v=4"
-          alt="victor"
-        />
+        <img src={teacher.avatar} alt={teacher.name} />
         <div>
-          <strong>Victor mesquini</strong>
-          <span>Programação</span>
+          <strong>{teacher.name}</strong>
+          <span>{teacher.subject}</span>
         </div>
       </header>
 
-      <p>descrição aquii</p>
+      <p>{teacher.bio}</p>
 
       <footer>
         <p>
           Preço/Hora
-          <strong>R$ 80,00</strong>
+          <strong>R$ {teacher.cost}</strong>
         </p>
 
-        <button type="button">
+        <a
+          href={`https://wa.me/55${teacher.whatsapp}`}
+          onClick={handleCreateNewConnection}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img src={wpIcon} alt="whatsapp" /> Entrar em contato
-        </button>
+        </a>
       </footer>
     </article>
   );
