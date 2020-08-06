@@ -9,9 +9,10 @@ import "./styles.css";
 
 interface IProps {
   title: string;
+  description?: string;
 }
 
-const PageHeader: React.FC<IProps> = ({ children, title }) => {
+const PageHeader: React.FC<IProps> = ({ children, title, description }) => {
   return (
     <header className="page-header">
       <div className="top-bar-container">
@@ -23,6 +24,7 @@ const PageHeader: React.FC<IProps> = ({ children, title }) => {
 
       <div className="header-content">
         <strong>{title}</strong>
+        {description && <p>{description}</p>}
       </div>
       {children}
     </header>
