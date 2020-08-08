@@ -1,6 +1,14 @@
 # Proffy
 
 <p align="center">
+  <img src=".github/mobile.jpg" alt="App demo"/>
+</p>
+
+<h4 align="center">
+  Platform to connect teachers (proffys) and students
+</h4>
+
+<p align="center">
   <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#information_source-how-to-use">How To Use</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
@@ -30,6 +38,10 @@ $ git clone https://github.com/mesquini/proffy
 > yarn dev
 
 > cd web
+> yarn install
+> yarn start
+
+> cd mobile
 > yarn install
 > yarn start
 ```

@@ -21,4 +21,8 @@ export const Title = styled.Text`
   margin-vertical: 40px;
 `;
 
-export const Description = styled.Text``;
+export const Header = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;

@@ -1,7 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useCallback, ReactNode } from "react";
 import { Image } from "react-native";
 
-import { Container, TopBar, Title, Description } from "./styles";
+import { Container, TopBar, Title, Header } from "./styles";
 
 import backIcon from "../../assets/icons/back.png";
 import logoImage from "../../assets/logo.png";
@@ -10,10 +10,10 @@ import { useNavigation } from "@react-navigation/native";
 
 interface IProps {
   title: string;
-  description?: string;
+  headerRight?: ReactNode;
 }
 
-const PageHeader: React.FC<IProps> = ({ title, description }) => {
+const PageHeader: React.FC<IProps> = ({ title, children, headerRight }) => {
   const { navigate } = useNavigation();
   const handleGoBack = useCallback(() => {
     navigate("Landing");
@@ -29,8 +29,13 @@ const PageHeader: React.FC<IProps> = ({ title, description }) => {
         <Image source={logoImage} resizeMode="contain" />
       </TopBar>
 
-      <Title>{title}</Title>
-      {description && <Description>{description}</Description>}
+      <Header>
+        <Title>{title}</Title>
+
+        {headerRight}
+      </Header>
+
+      {children}
     </Container>
   );
 };
